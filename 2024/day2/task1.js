@@ -6,6 +6,7 @@ const checkReportSafety = (reportArray) => {
     let safeCount = 0;
     reportArray.map(eachReport => {
         const reportData = eachReport.trim().split(" ").map(Number);
+        // expect 1 or -1
         const expectedSign = Math.sign(reportData[1] - reportData[0]);
         for(let i=0; i<reportData.length-1; i++) {
             const difference = reportData[i+1]-reportData[i];
@@ -20,6 +21,7 @@ const checkReportSafety = (reportArray) => {
     return safeCount;
 }
 
+// read txt file
 const reportArray = fs.readFileSync("data/reportData.txt", "utf8").trim()
 .split("\n")
 
